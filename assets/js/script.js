@@ -1,6 +1,7 @@
 var searchDisplay = document.getElementsByClassName('.form');
 var fetchButton = document.getElementById('format')
 var ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw"
+var geolocatorURL = 'https://ipapi.co/postal/'
 
 function displayEvents(data) {
   var eventsData = data._embedded.events
@@ -32,3 +33,12 @@ $.ajax({
 });
 
 fetchButton.addEventListener('click', displayEvents);
+
+// calling geolocation API
+$.ajax({
+  url: geolocatorURL,
+  method: 'GET',
+}).then(function (response) {
+  console.log('AJAX Response \n-------------');
+  console.log(response);
+});
