@@ -1,7 +1,9 @@
 var searchDisplay = document.getElementsByClassName('.form');
+
 var fetchButton = document.getElementById('format');
 var eventsURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
 var eventDetails = "https://app.ticketmaster.com/discovery/v2/attractions/K8vZ9175BhV.json?apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
+
 
 function displayEvents(data) {
   var eventsData = data._embedded.attractions
@@ -35,6 +37,7 @@ $.ajax({
 fetchButton.addEventListener('click', displayEvents);
 
 
+
 //function to Display events with detail info.
 
 $.ajax({
@@ -59,3 +62,13 @@ function eventInfo(json) {
     
   }
 }
+=======
+// calling geolocation API
+$.ajax({
+  url: geolocatorURL,
+  method: 'GET',
+}).then(function (response) {
+  console.log('AJAX Response \n-------------');
+  console.log(response);
+});
+
