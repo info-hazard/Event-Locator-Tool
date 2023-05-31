@@ -1,23 +1,24 @@
 var searchDisplay = document.getElementsByClassName('.form');
 var fetchButton = document.getElementById('format');
-var eventsURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
-var eventDetails = "https://app.ticketmaster.com/discovery/v2/attractions/K8vZ9175BhV.json?apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
 var geolocatorURL ='https://ipapi.co/postal/'
+var postalCodeURl = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&postalCode&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw"
 
 
 function displayEvents(data) {
-  var eventsData = data._embedded.attractions
+  var eventsData = data._embedded.events
   for (var i = 0; i < eventsData.length; i++){
-    var eventsearchEl = document.createElement('option');
-    eventsearchEl.textContent = eventsData[i].attractions;
-    $('.form').append(eventsearchEl);
+    var genre = eventsData[i].classifications[0].subGenre.name  //country
+    var option = `<option value="${genre}">${genre}</option>`;
+    //<option value="country">Country</option>
+    $('#format').append(option);
+    
   }
 };
 
 //fetch event search
 $.ajax({
   type:"GET",
-  url: eventsURL,
+  url: postalCodeURl,
   async: true,
   dataType: "json",
   success: function(data) {
@@ -30,30 +31,10 @@ $.ajax({
            
 });
 
-fetchButton.addEventListener('click', displayEvents);
+//fetchButton.addEventListener('click', displayEvents);
 
 
 
-//function to Display events with detail info.
-$.ajax({
-  type:"GET",
-  url:eventDetails,
-  async:true,
-  dataType: "json",
-  success: function(json) {
-              console.log(json);
-           },
-  error: function(xhr, status, err) {
-           }
-});
-
-
-function eventInfo(json) {
-  var eventInfo = json.name.classifications
-  for (var i=0; i < eventInfo.length; i++){
-    
-  }
-}
 
 // calling geolocation API
 $.ajax({
