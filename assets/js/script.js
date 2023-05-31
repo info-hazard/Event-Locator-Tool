@@ -1,8 +1,7 @@
 var searchDisplay = document.getElementsByClassName('.form');
 var fetchButton = document.getElementById('format');
-var geolocatorURL ='https://ipapi.co/postal/'
-var postalcodeURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&postalCode=&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
-var geolocatorResponse = '';
+var geolocatorURL ='https://ipapi.co/json/';
+var postalcodeURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&city=&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
 
 
 function displayEvents(data) {
@@ -45,9 +44,16 @@ $.ajax({
   dataType: "json",
   success: function(response) {
               console.log(response);
-              geolocatorResponse = response;
+              userCity = response.city
+              renderCity(response.city)
+              console.log("city: " + userCity)
            },
   error: function(xhr, status, err) {
            }
 });
 
+// rendering city
+function renderCity(city) {
+  //setting value in html
+  $('#location').val(city);
+}
