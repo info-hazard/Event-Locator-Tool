@@ -1,24 +1,39 @@
 var searchDisplay = document.getElementsByClassName('.form');
-var fetchButton = document.getElementById('format');
+var fetchButton = document.getElementById('submit');
 var geolocatorURL ='https://ipapi.co/json/';
-var postalcodeURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&city=&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
+var eventURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&city=&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw";
+
+
+
 
 
 function displayEvents(data) {
   var eventsData = data._embedded.events
   for (var i = 0; i < eventsData.length; i++){
-    var genre = eventsData[i].classifications[0].subGenre.name  //country
-    var option = `<option value="${genre}">${genre}</option>`;
-    //<option value="country">Country</option>
-    $('#format').append(option);
-    
+    var event = eventsData[i].events 
+    var eventTitle = `<div class="${event}">${event}</div>`;
+    $('list-events').text(eventTitle);
+   
   }
 };
+//search click function
+var eventFunction = function(event) {
+  event.preventDefault();
+  var cityInput = fetchButton.value.trim()
+  if (renderCity) {
+    displayEvents(cityInput);
+    fetchButton.textContent = '';
+  }
+  else { 
+    alert('Please Enter a city name');
+  }
+}
+
 
 //fetch event search
 $.ajax({
   type:"GET",
-  url: postalcodeURL,
+  url: eventURL,
   async: true,
   dataType: "json",
   success: function(data) {
@@ -31,7 +46,7 @@ $.ajax({
            
 });
 
-//fetchButton.addEventListener('click', displayEvents);
+
 
 
 
@@ -57,3 +72,5 @@ function renderCity(city) {
   //setting value in html
   $('#location').val(city);
 }
+
+fetchButton.addEventListener('click', displayEvents);
