@@ -24,7 +24,16 @@ function displayEvents(data) {
   var eventsData = data._embedded.events
   for (var i = 0; i < eventsData.length; i++){
     var eventTitle = eventsData[i].name
-    var eventEl = `<div class="">${eventTitle}</div>`;
+    var eventImg = eventsData[i].images[0].url
+    var eventURL = eventsData[i].url
+    var eventEl = `<div class="card" style="width: 300px;">
+    <div class="card-divider">${eventTitle}</div>
+    <img src="${eventImg}">
+    <div class="card-section">
+      <h4></h4>
+      <a href=${eventURL}>Link for Details</a>
+    </div>`
+
     $('.list-events').append(eventEl);
    
   }
@@ -38,6 +47,7 @@ function fetchevents(event){
   event.preventDefault()
   var eventURL = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&city=${userCity}&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw`;
   console.log('clicked')
+
 //fetch event search
 $.ajax({
   type:"GET",
