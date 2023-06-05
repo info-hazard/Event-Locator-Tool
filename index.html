@@ -9,6 +9,7 @@
     <title>Event Locator Tool</title>
   </head>
   <body class="home">
+    <button class="refresh-button" onClick="window.location.reload();">Home Page</button>
     <div class="container" class="grid-container">
       <h1 class="animate-character">Find Events Near You</h1>
       <div class="grid-y grid-margin-y align-middle">
@@ -19,7 +20,7 @@
       </div>
       <div class="grid-y grid-margin-y"><button href="#" class="button" id="geo" type="submit">Find your city!</button></div>
       <div class="grid-y grid-margin-y"><button href="#" class="button" id="submit" type="submit">Search</button></div>
-      <div id="event-container" class="list-events"></div>
+      <div id="event-container" class="list-events grid-x margin-x"></div>
     </div>
     <!--test-->
     <!--end test-->
