@@ -8,25 +8,23 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Event Locator Tool</title>
   </head>
-    <body class="home">
-      <div class="container">
-          <h1 class= "heading">Find Events Near You</h1>
-          <form>
-              <label>City</label>
-              <input id="location" placeholder="Location"></input><br>
-              <button class="submit" id="submit" type="submit">Search</button>
-
-              <div class="category-group">
-                  <h2 class="subtitle">Events happening near you. <span id="subtitle"></span></h2>
-                  <!-- display events -->
-                  <div id="event-container" class="list-events"></div>
-                </div>
-              </div>
-              </div>
-          </form>
+  <body class="home">
+    <div class="container" class="grid-container">
+      <h1 class="animate-character">Find Events Near You</h1>
+      <div class="grid-y grid-margin-y align-middle">
+        <form class="grid-y grid-margin-y align-middle">
+          <label><h2>Your City</h2></label>
+          <input style="text-align:center" id="location" placeholder="Enter City Here"></input><br>
+        </form>
       </div>
-      <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
-	    <script src="./assets/js/script.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
-    </body>
+      <div class="grid-y grid-margin-y"><button href="#" class="button" id="geo" type="submit">Find your city!</button></div>
+      <div class="grid-y grid-margin-y"><button href="#" class="button" id="submit" type="submit">Search</button></div>
+      <div id="event-container" class="list-events"></div>
+    </div>
+    <!--test-->
+    <!--end test-->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script> 
+	  <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+  </body>
 </html>

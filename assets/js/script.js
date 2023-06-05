@@ -1,5 +1,6 @@
 
-var fetchButton = document.getElementById('submit');
+var searchButton = document.getElementById('submit');
+var geoButton = document.getElementById('geo')
 var geolocatorURL ='https://ipapi.co/json/';
 var userCity =''
 
@@ -9,10 +10,10 @@ var userCity =''
 var eventFunction = function(event) {
   event.preventDefault();
 
-  var cityInput = fetchButton.value.trim()
+  var cityInput = searchButton.value.trim()
   if (renderCity){
     cityInput(displayEvents);
-    fetchButton.textContent = '';
+    searchButton.textContent = '';
   }
   else { 
     alert('Please Enter a city name');
@@ -84,14 +85,20 @@ $.ajax({
            }
 });
 
-// rendering city
-function renderCity(city) {
-  //setting value in html
-  $('#location').val(city);
-};
+searchButton.addEventListener('click', fetchevents);
 
-fetchButton.addEventListener('click', fetchevents);
 $('#location').on('keyup',function(){
   userCity=$('#location').val()
+  localStorage.setItem("city", userCity)
   console.log(userCity)
 });
+
+$(geoButton).on('click', function renderCity(city) {
+  //setting value in html
+  $('#location').val(userCity);
+});
+
+
+$("#location").val(localStorage.getItem("city"));
+
+
