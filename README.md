@@ -1,7 +1,7 @@
 # Event-Locator-Tool
 
 ## User Story
-A quarter into our Coding Bootcamp course, our knowledge is put to the test in creating our own application. As our first group project, We wanted to create an app that generated event happening within your city. The Applicaiton itself will access your current address and filter the events within cit range. As someone who doesn't have anything to do on a saturday night, I want to be able to see local events based on my address so I can find events that are near me with ease.
+A quarter into our Coding Bootcamp course, our knowledge is put to the test in creating our own application. As our first group project, we wanted to create an app that generated events happening within your city. The application itself will access your current address and filter the events within city range. As someone who doesn't have anything to do on the weekend, I want to be able to see local events based on my location so I can find events that are near me with ease.
 
 ## Acceptance Criteria
 The following is the criteria that must be met: 
@@ -22,7 +22,7 @@ Finally, You must add your project to the portfolio that you created in Module 2
 ## Assets
 Th main functionality of our application is to display events. To achieve this, we utilised the [Ticketmaster API](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/). One of the Challenges that we faced was working with an API key (access key). We used Javascript and Jquery hand in hand to work around that obsticle. In order to grap the users location, we used [IP Geolocation API](https://ip-api.com/) and incorperate it with the ticketmaster API to filter the event search by city. The styling of the app was done with [Foundations Framework](https://get.foundation/sites/docs/).
 
-Bellow are some image displays of the application:
+Below are some image displays of the application:
 
 
-Here is the link to the Application:
+Here is the link to the application:
