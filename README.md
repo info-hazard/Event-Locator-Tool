@@ -22,7 +22,7 @@ Finally, You must add your project to the portfolio that you created in Module 2
 ## Assets
 Th main functionality of our application is to display events. To achieve this, we utilised the [Ticketmaster API](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/). One of the Challenges that we faced was working with an API key (access key). We used Javascript and Jquery hand in hand to work around that obsticle. In order to grap the users location, we used [IP Geolocation API](https://ip-api.com/) and incorperate it with the ticketmaster API to filter the event search by city. The styling of the app was done with [Foundations Framework](https://get.foundation/sites/docs/).
 
-Below are some images of the application:
+Below is an image of the application:
 
 ![alt text](assets/images/events.png)
 
