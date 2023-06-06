@@ -1,15 +1,11 @@
-
 var searchButton = document.getElementById('submit');
 var geoButton = document.getElementById('geo')
 var geolocatorURL ='https://ipapi.co/json/';
 var userCity =''
 
-
-
 //search click function
 var eventFunction = function(event) {
   event.preventDefault();
-
   var cityInput = searchButton.value.trim()
   if (renderCity){
     cityInput(displayEvents);
@@ -17,11 +13,9 @@ var eventFunction = function(event) {
   }
   else { 
     alert('Please Enter a city name');
-  }
-};
+  }};
 
 function displayEvents(data) {
- 
   var eventsData = data._embedded.events
   for (var i = 0; i < eventsData.length; i++){
     var eventTitle = eventsData[i].name
@@ -36,21 +30,14 @@ function displayEvents(data) {
     </div>`
 
     $('.list-events').append(eventEl);
-   
-  }
-};
-
-
-
-
+  }};
 
 function fetchevents(event){
   event.preventDefault()
   var eventURL = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&city=${userCity}&apikey=HLtESgDRQC62k8RSusY2rKZAWIYZkVAw`;
   console.log('clicked')
-
-//fetch event search
-$.ajax({
+  //fetch event search
+  $.ajax({
   type:"GET",
   url: eventURL,
   async: true,
@@ -61,13 +48,8 @@ $.ajax({
            },
           
   error: function(xhr, status, err) {
-           }
-           
-});
-
+           }});
 }
-
-
 
 // calling geolocation API
 $.ajax({
@@ -86,13 +68,14 @@ $.ajax({
 });
 
 searchButton.addEventListener('click', fetchevents);
-
+//saves location value on keyclick
 $('#location').on('keyup',function(){
   userCity=$('#location').val()
   localStorage.setItem("city", userCity)
   console.log(userCity)
 });
 
+//renders user locations on button click
 $(geoButton).on('click', function renderCity(city) {
   //setting value in html
   $('#location').val(userCity);
